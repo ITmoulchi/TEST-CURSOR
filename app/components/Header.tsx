@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaChevronDown, FaChevronRight, FaSearch, FaTimes } from "react-icons/fa";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const contact = {
   phone: "+212 537 776189",
@@ -205,7 +206,11 @@ export default function Header() {
       <nav className={`w-full bg-white shadow-md border-b border-gray-100 transition-transform duration-300 ${hideNav ? "-translate-y-full" : "translate-y-0"}`} style={{margin:0,padding:0,border:0}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
           <div className="flex items-center gap-4">
-            <Image src="/images/inau logo.png" alt="INAU Logo" width={120} height={40} className="object-contain" />
+            <div className="flex-1 flex justify-center lg:justify-start">
+              <Link href="/">
+                <Image src="/images/Group 418.png" alt="INAU Logo" width={120} height={40} className="object-contain" />
+              </Link>
+            </div>
           </div>
           <div className="hidden md:flex gap-6 items-center h-full">
             {menu.map((item, idx) => (

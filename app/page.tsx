@@ -50,11 +50,11 @@ const annonces = [
   { image: "/images/graduation.jpg", date: "25 Juin 2024", title: "Titre de l'annonce 5", desc: "Annonce supplémentaire pour tester le diaporama." },
 ];
 const formations = [
-  { image: "/images/inau logo.png", title: "Formation 1", desc: "Courte description de la formation proposée par l'INAU pour les étudiants et professionnels." },
-  { image: "/images/inau logo.png", title: "Formation 2", desc: "Une autre formation de qualité à l'INAU." },
-  { image: "/images/inau logo.png", title: "Formation 3", desc: "Formation axée sur l'innovation et la pratique." },
-  { image: "/images/inau logo.png", title: "Formation 4", desc: "Formation complémentaire pour les professionnels." },
-  { image: "/images/inau logo.png", title: "Formation 5", desc: "Formation avancée pour les étudiants." },
+  { image: "/images/Group 418.png", title: "Formation 1", desc: "Courte description de la formation proposée par l'INAU pour les étudiants et professionnels." },
+  { image: "/images/Group 418.png", title: "Formation 2", desc: "Une autre formation de qualité à l'INAU." },
+  { image: "/images/Group 418.png", title: "Formation 3", desc: "Formation axée sur l'innovation et la pratique." },
+  { image: "/images/Group 418.png", title: "Formation 4", desc: "Formation complémentaire pour les professionnels." },
+  { image: "/images/Group 418.png", title: "Formation 5", desc: "Formation avancée pour les étudiants." },
 ];
 
 // Add explicit types for Carousel props and parameters
@@ -287,10 +287,10 @@ export default function Home() {
             <p className="text-gray-700 mb-2">L'INAU collabore avec de nombreux partenaires nationaux et internationaux pour promouvoir la recherche et l'innovation en urbanisme.</p>
             <a href="#" className="text-green-700 hover:underline font-semibold">Voir nos partenaires →</a>
           </div>
-          <div className="flex flex-wrap gap-4 items-center">
-            <img src="/images/inau logo.png" alt="INAU" className="h-12 w-auto" />
-            <img src="/images/inau logo.png" alt="Partenaire 2" className="h-12 w-auto opacity-60" />
-            <img src="/images/inau logo.png" alt="Partenaire 3" className="h-12 w-auto opacity-40" />
+          <div className="flex justify-around items-center gap-8 flex-wrap">
+            <img src="/images/Group 418.png" alt="INAU" className="h-12 w-auto" />
+            <img src="/images/Group 418.png" alt="Partenaire 2" className="h-12 w-auto opacity-60" />
+            <img src="/images/Group 418.png" alt="Partenaire 3" className="h-12 w-auto opacity-40" />
           </div>
         </div>
       </motion.section>
@@ -374,7 +374,7 @@ export default function Home() {
       <footer className="bg-green-900 text-white py-10 mt-12">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
           <div>
-            <img src="/images/inau logo.png" alt="INAU" className="h-10 mb-4" />
+            <img src="/images/Group 418.png" alt="INAU" className="h-10 mb-4" />
             <p className="text-sm">Institut National d'Aménagement et d'Urbanisme<br />Avenue Allal El Fassi, B.P. 6215, Rabat – Instituts, Maroc</p>
           </div>
           <div>

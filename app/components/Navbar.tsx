@@ -137,95 +137,97 @@ export default function Navbar({ hideNav }: { hideNav?: boolean }) {
   };
 
   return (
-    <nav className={`w-full bg-white shadow-md border-b border-gray-100 transition-transform duration-300 ${hideNav ? "-translate-y-full" : "translate-y-0"}`} style={{margin:0,padding:0,border:0}}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
-        <div className="flex items-center gap-4">
-          <Link href="/" passHref legacyBehavior>
-            <a className="flex items-center"><Image src="/images/inau logo.png" alt="INAU Logo" width={160} height={60} className="object-contain" priority /></a>
-          </Link>
-        </div>
-        <div className="hidden md:flex gap-6 items-center h-full">
-          {menu.map((item, idx) => (
-            <div
-              key={item.label}
-              className="relative h-full flex items-center"
-              onMouseEnter={() => setOpenIndex(idx)}
-              onMouseLeave={() => setOpenIndex(null)}
-            >
-              {item.children ? (
-                <button
-                  className={`flex items-center gap-1 px-3 py-2 rounded font-medium text-[#2C2C2C] group-hover:text-green-700 transition-colors select-none ${openIndex === idx ? "text-green-700" : ""}`}
-                  tabIndex={0}
-                  type="button"
+    <header className="relative bg-white shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          <div className="flex-shrink-0">
+            <a className="flex items-center"><Image src="/images/Group 418.png" alt="INAU Logo" width={50} height={50} className="object-contain" priority /></a>
+          </div>
+          <div className="hidden md:block">
+            <nav className="flex items-center space-x-8">
+              {menu.map((item, idx) => (
+                <div
+                  key={item.label}
+                  className="relative h-full flex items-center"
+                  onMouseEnter={() => setOpenIndex(idx)}
+                  onMouseLeave={() => setOpenIndex(null)}
                 >
-                  {item.label}
-                  <FaChevronDown size={12} />
-                </button>
-              ) : (
-                <a
-                  href={item.href}
-                  className={`px-3 py-2 rounded font-medium text-[#2C2C2C] hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
-                >
-                  {item.label}
-                </a>
-              )}
-              {item.children && openIndex === idx && (
-                <div className="absolute left-0 top-full min-w-[200px]">
-                  <Dropdown items={item.children} pathname={pathname} />
+                  {item.children ? (
+                    <button
+                      className={`flex items-center gap-1 px-3 py-2 rounded font-medium text-[#2C2C2C] group-hover:text-green-700 transition-colors select-none ${openIndex === idx ? "text-green-700" : ""}`}
+                      tabIndex={0}
+                      type="button"
+                    >
+                      {item.label}
+                      <FaChevronDown size={12} />
+                    </button>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className={`px-3 py-2 rounded font-medium text-[#2C2C2C] hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+                    >
+                      {item.label}
+                    </a>
+                  )}
+                  {item.children && openIndex === idx && (
+                    <div className="absolute left-0 top-full min-w-[200px]">
+                      <Dropdown items={item.children} pathname={pathname} />
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          ))}
-          {/* Desktop search icon and dropdown */}
-          <div className="relative">
-            <button
-              className="ml-4 text-[#2C2C2C] hover:text-green-700 transition-colors text-xl rounded-full bg-gray-100 p-2 focus:outline-none focus:ring-2 focus:ring-green-600"
-              onClick={() => {
-                setSearchOpen((v) => !v);
-                setTimeout(() => searchInputRef.current?.focus(), 100);
-              }}
-              aria-label="Search"
-            >
-              <FaSearch />
-            </button>
-            {searchOpen && (
-              <form
-                onSubmit={e => { e.preventDefault(); if (searchValue.trim()) alert(`Recherche: ${searchValue}`); }}
-                className="absolute right-0 top-12 bg-white border rounded-full shadow-lg flex items-center px-2 py-1 z-50 w-72 animate-fade-in"
-              >
-                <FaSearch className="text-green-700 mr-2 text-lg" />
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  value={searchValue}
-                  onChange={e => setSearchValue(e.target.value)}
-                  placeholder="Rechercher..."
-                  className="flex-1 border-none outline-none bg-transparent text-[#2C2C2C] placeholder-gray-400 px-1 py-1"
-                />
-                {searchValue && (
-                  <button type="button" onClick={() => setSearchValue("")}
-                    className="ml-2 text-gray-400 hover:text-red-500">
-                    <FaTimes />
-                  </button>
-                )}
-                <button type="submit" className="ml-2 bg-green-700 hover:bg-green-800 text-white rounded-full p-1.5 transition-colors">
+              ))}
+              {/* Desktop search icon and dropdown */}
+              <div className="relative">
+                <button
+                  className="ml-4 text-[#2C2C2C] hover:text-green-700 transition-colors text-xl rounded-full bg-gray-100 p-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+                  onClick={() => {
+                    setSearchOpen((v) => !v);
+                    setTimeout(() => searchInputRef.current?.focus(), 100);
+                  }}
+                  aria-label="Search"
+                >
                   <FaSearch />
                 </button>
-              </form>
-            )}
+                {searchOpen && (
+                  <form
+                    onSubmit={e => { e.preventDefault(); if (searchValue.trim()) alert(`Recherche: ${searchValue}`); }}
+                    className="absolute right-0 top-12 bg-white border rounded-full shadow-lg flex items-center px-2 py-1 z-50 w-72 animate-fade-in"
+                  >
+                    <FaSearch className="text-green-700 mr-2 text-lg" />
+                    <input
+                      ref={searchInputRef}
+                      type="text"
+                      value={searchValue}
+                      onChange={e => setSearchValue(e.target.value)}
+                      placeholder="Rechercher..."
+                      className="flex-1 border-none outline-none bg-transparent text-[#2C2C2C] placeholder-gray-400 px-1 py-1"
+                    />
+                    {searchValue && (
+                      <button type="button" onClick={() => setSearchValue("")}
+                        className="ml-2 text-gray-400 hover:text-red-500">
+                        <FaTimes />
+                      </button>
+                    )}
+                    <button type="submit" className="ml-2 bg-green-700 hover:bg-green-800 text-white rounded-full p-1.5 transition-colors">
+                      <FaSearch />
+                    </button>
+                  </form>
+                )}
+              </div>
+            </nav>
           </div>
-        </div>
-        {/* Mobile menu button only */}
-        <div className="flex md:hidden items-center gap-2">
-          <button
-            className="flex flex-col gap-1.5"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Toggle menu"
-          >
-            <span className="w-7 h-0.5 bg-green-700 rounded" />
-            <span className="w-7 h-0.5 bg-green-700 rounded" />
-            <span className="w-7 h-0.5 bg-green-700 rounded" />
-          </button>
+          {/* Mobile menu button only */}
+          <div className="flex md:hidden items-center gap-2">
+            <button
+              className="flex flex-col gap-1.5"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              <span className="w-7 h-0.5 bg-green-700 rounded" />
+              <span className="w-7 h-0.5 bg-green-700 rounded" />
+              <span className="w-7 h-0.5 bg-green-700 rounded" />
+            </button>
+          </div>
         </div>
       </div>
       {/* Mobile menu */}
@@ -318,6 +320,6 @@ export default function Navbar({ hideNav }: { hideNav?: boolean }) {
           </form>
         </div>
       )}
-    </nav>
+    </header>
   );
 } 
