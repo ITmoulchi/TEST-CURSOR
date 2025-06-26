@@ -1,8 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 
+<<<<<<< HEAD
 export const metadata = { title: 'Statuts 2017' };
 
+=======
+>>>>>>> 82e94024455ece946db7e44dba3bd0f74ee6b49c
 const Decret2017Page = () => {
     return (
         <div className="bg-white">

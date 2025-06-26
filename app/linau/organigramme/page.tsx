@@ -1,7 +1,10 @@
 import React from 'react';
 
+<<<<<<< HEAD
 export const metadata = { title: 'Organigramme' };
 
+=======
+>>>>>>> 82e94024455ece946db7e44dba3bd0f74ee6b49c
 const organigrammeData = {
     directeur: {
         titre: 'Directeur de l\'Institut',
