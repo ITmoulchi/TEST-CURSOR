@@ -160,6 +160,15 @@ export default function Navbar({ hideNav }: { hideNav?: boolean }) {
                       {item.label}
                       <FaChevronDown size={12} />
                     </button>
+                  ) : item.label === "Bibliothèque" ? (
+                    <a
+                      href="https://inau.ac.ma/binau/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`px-3 py-2 rounded font-medium text-[#2C2C2C] hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+                    >
+                      {item.label}
+                    </a>
                   ) : (
                     <a
                       href={item.href}
@@ -246,6 +255,15 @@ export default function Navbar({ hideNav }: { hideNav?: boolean }) {
                       {item.label}
                       <FaChevronDown size={14} className={mobileMenuState[item.label] ? "rotate-180 transition-transform" : "transition-transform"} />
                     </button>
+                  ) : item.label === "Bibliothèque" ? (
+                    <a
+                      href="https://inau.ac.ma/binau/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`block w-full text-left hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+                    >
+                      {item.label}
+                    </a>
                   ) : (
                     <a
                       href={item.href}
@@ -270,7 +288,7 @@ export default function Navbar({ hideNav }: { hideNav?: boolean }) {
                                 type="button"
                               >
                                 {sub.label}
-                                <FaChevronDown size={12} className={mobileMenuState[sub.label] ? "rotate-180 transition-transform" : "transition-transform"} />
+                                <FaChevronDown size={14} className={mobileMenuState[sub.label] ? "rotate-180 transition-transform" : "transition-transform"} />
                               </button>
                             </div>
                             {mobileMenuState[sub.label] && (

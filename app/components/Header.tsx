@@ -90,7 +90,7 @@ const menu = [
       { label: "Publications de l'INAU", href: "/actualites/publications" },
     ],
   },
-  { label: "Bibliothèque", href: "/bibliotheque" },
+  { label: "Bibliothèque", href: "https://inau.ac.ma/binau/", external: true },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -111,12 +111,23 @@ function Dropdown({ items, depth = 0, pathname }: { items: any[]; depth?: number
               <FaChevronDown size={12} />
             </span>
           ) : (
-            <a
-              href={item.href}
-              className={`text-[#2C2C2C] group-hover:text-green-700 font-medium transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
-            >
-              {item.label}
-            </a>
+            item.external ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-[#2C2C2C] group-hover:text-green-700 font-medium transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <a
+                href={item.href}
+                className={`text-[#2C2C2C] group-hover:text-green-700 font-medium transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+              >
+                {item.label}
+              </a>
+            )
           )}
           {item.children && openIndex === idx && (
             <div className="absolute left-full top-0 min-w-[200px]">
@@ -229,12 +240,23 @@ export default function Header() {
                     <FaChevronDown size={12} />
                   </button>
                 ) : (
-                  <a
-                    href={item.href}
-                    className={`px-3 py-2 rounded font-medium text-[#2C2C2C] hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
-                  >
-                    {item.label}
-                  </a>
+                  item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`px-3 py-2 rounded font-medium text-[#2C2C2C] hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className={`px-3 py-2 rounded font-medium text-[#2C2C2C] hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+                    >
+                      {item.label}
+                    </a>
+                  )
                 )}
                 {item.children && openIndex === idx && (
                   <div className="absolute left-0 top-full min-w-[200px]">
@@ -312,12 +334,23 @@ export default function Header() {
                         <FaChevronDown size={14} className={mobileMenuState[item.label] ? "rotate-180 transition-transform" : "transition-transform"} />
                       </button>
                     ) : (
-                      <a
-                        href={item.href}
-                        className={`block w-full text-left hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
-                      >
-                        {item.label}
-                      </a>
+                      item.external ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`block w-full text-left hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        <a
+                          href={item.href}
+                          className={`block w-full text-left hover:text-green-700 transition-colors ${pathname === item.href ? "text-green-700 font-bold" : ""}`}
+                        >
+                          {item.label}
+                        </a>
+                      )
                     )}
                   </div>
                   {/* Submenu for mobile */}
@@ -342,14 +375,46 @@ export default function Header() {
                                 <ul className="pl-4 border-l border-green-100 mt-1">
                                   {sub.children.map((sub2: any) => (
                                     <li key={sub2.label} className="py-1">
-                                      <a href={sub2.href} className={`hover:text-green-700 transition-colors ${pathname === sub2.href ? "text-green-700 font-bold" : ""}`}>{sub2.label}</a>
+                                      {sub2.external ? (
+                                        <a
+                                          href={sub2.href}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className={`hover:text-green-700 transition-colors ${pathname === sub2.href ? "text-green-700 font-bold" : ""}`}
+                                        >
+                                          {sub2.label}
+                                        </a>
+                                      ) : (
+                                        <a
+                                          href={sub2.href}
+                                          className={`hover:text-green-700 transition-colors ${pathname === sub2.href ? "text-green-700 font-bold" : ""}`}
+                                        >
+                                          {sub2.label}
+                                        </a>
+                                      )}
                                     </li>
                                   ))}
                                 </ul>
                               )}
                             </>
                           ) : (
-                            <a href={sub.href} className={`hover:text-green-700 transition-colors ${pathname === sub.href ? "text-green-700 font-bold" : ""}`}>{sub.label}</a>
+                            item.external ? (
+                              <a
+                                href={sub.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`hover:text-green-700 transition-colors ${pathname === sub.href ? "text-green-700 font-bold" : ""}`}
+                              >
+                                {sub.label}
+                              </a>
+                            ) : (
+                              <a
+                                href={sub.href}
+                                className={`hover:text-green-700 transition-colors ${pathname === sub.href ? "text-green-700 font-bold" : ""}`}
+                              >
+                                {sub.label}
+                              </a>
+                            )
                           )}
                         </li>
                       ))}

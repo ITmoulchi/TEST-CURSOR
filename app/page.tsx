@@ -45,41 +45,49 @@ const slides = [
 
 // Dummy data for carousels
 const annonces = [
-  { image: "/images/graduation.jpg", date: "08 Juin 2024", title: "Titre de l'annonce 1", desc: "Description courte de l'annonce pour donner un aperçu rapide à l'utilisateur." },
-  { image: "/images/exams.jpg", date: "12 Juin 2024", title: "Titre de l'annonce 2", desc: "Une autre annonce importante pour les étudiants et le staff." },
-  { image: "/images/school.jpg", date: "15 Juin 2024", title: "Titre de l'annonce 3", desc: "Annonce sur un événement à venir à l'INAU." },
-  { image: "/images/sports.jpg", date: "20 Juin 2024", title: "Titre de l'annonce 4", desc: "Annonce sur les activités sportives de l'INAU." },
-  { image: "/images/graduation.jpg", date: "25 Juin 2024", title: "Titre de l'annonce 5", desc: "Annonce supplémentaire pour tester le diaporama." },
+  { image: "/images/graduation.jpg", date: "08 Juin 2024", title: "Titre de l'annonce 1", desc: "Description courte de l'annonce pour donner un aperçu rapide à l'utilisateur.", category: "Conférence" },
+  { image: "/images/exams.jpg", date: "12 Juin 2024", title: "Titre de l'annonce 2", desc: "Une autre annonce importante pour les étudiants et le staff.", category: "Urbanisme" },
+  { image: "/images/school.jpg", date: "15 Juin 2024", title: "Titre de l'annonce 3", desc: "Annonce sur un événement à venir à l'INAU.", category: "Événement" },
+  { image: "/images/sports.jpg", date: "20 Juin 2024", title: "Titre de l'annonce 4", desc: "Annonce sur les activités sportives de l'INAU.", category: "Sport" },
+  { image: "/images/graduation.jpg", date: "25 Juin 2024", title: "Titre de l'annonce 5", desc: "Annonce supplémentaire pour tester le diaporama.", category: "Atelier" },
 ];
 const formations = [
-  { image: "/images/Group 418.png", title: "Formation 1", desc: "Courte description de la formation proposée par l'INAU pour les étudiants et professionnels." },
-  { image: "/images/Group 418.png", title: "Formation 2", desc: "Une autre formation de qualité à l'INAU." },
-  { image: "/images/Group 418.png", title: "Formation 3", desc: "Formation axée sur l'innovation et la pratique." },
-  { image: "/images/Group 418.png", title: "Formation 4", desc: "Formation complémentaire pour les professionnels." },
-  { image: "/images/Group 418.png", title: "Formation 5", desc: "Formation avancée pour les étudiants." },
+  { image: "/images/Group 418.png", title: "Formation 1", desc: "Courte description de la formation proposée par l'INAU pour les étudiants et professionnels.", category: "Urbanisme" },
+  { image: "/images/Group 418.png", title: "Formation 2", desc: "Une autre formation de qualité à l'INAU.", category: "Architecture" },
+  { image: "/images/Group 418.png", title: "Formation 3", desc: "Formation axée sur l'innovation et la pratique.", category: "Innovation" },
+  { image: "/images/Group 418.png", title: "Formation 4", desc: "Formation complémentaire pour les professionnels.", category: "Professionnel" },
+  { image: "/images/Group 418.png", title: "Formation 5", desc: "Formation avancée pour les étudiants.", category: "Avancé" },
 ];
 
 // Add explicit types for Carousel props and parameters
 interface CarouselProps {
   items: any[];
   renderItem: (item: any, idx: number) => JSX.Element;
-  itemsPerView?: number;
   auto?: boolean;
   interval?: number;
 }
 
-function Carousel({ items, renderItem, itemsPerView = 3, auto = true, interval = 4000 }: CarouselProps) {
-  const [current, setCurrent] = useState(0);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const max = items.length;
-  const [isMobile, setIsMobile] = useState(false);
+function useItemsPerView() {
+  const [itemsPerView, setItemsPerView] = useState(3);
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    function handleResize() {
+      const w = window.innerWidth;
+      if (w < 640) setItemsPerView(1); // mobile
+      else if (w < 1024) setItemsPerView(2); // tablet/small desktop
+      else setItemsPerView(3); // desktop
+    }
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  const perView = isMobile ? 1 : itemsPerView;
+  return itemsPerView;
+}
+
+function Carousel({ items, renderItem, auto = true, interval = 4000 }: CarouselProps) {
+  const itemsPerView = useItemsPerView();
+  const [current, setCurrent] = useState(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const max = items.length;
 
   useEffect(() => {
     if (!auto) return;
@@ -105,7 +113,7 @@ function Carousel({ items, renderItem, itemsPerView = 3, auto = true, interval =
 
   // Calculate visible items
   let visible: any[] = [];
-  for (let i = 0; i < perView; i++) {
+  for (let i = 0; i < itemsPerView; i++) {
     visible.push(items[(current + i) % max]);
   }
 
@@ -116,26 +124,23 @@ function Carousel({ items, renderItem, itemsPerView = 3, auto = true, interval =
   return (
     <div className="relative w-full flex flex-col items-center justify-center pb-8">
       {/* Cards row with arrows next to cards */}
-      <div className="relative w-full flex items-center justify-center"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
+      <div className="relative w-full flex items-center justify-center">
         {/* Left Arrow */}
         <button
           onClick={prev}
           aria-label="Précédent"
-          className="hidden md:flex absolute -left-8 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-12 h-12 bg-white border-2 border-[#20b2aa] text-[#19786a] hover:bg-[#20b2aa] hover:text-white rounded-full shadow transition-colors"
+          className="hidden lg:flex absolute -left-8 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-12 h-12 bg-white border-2 border-[#20b2aa] text-[#19786a] hover:bg-[#20b2aa] hover:text-white rounded-full shadow transition-colors"
         >
           <FaChevronLeft size={28} />
         </button>
         {/* Cards Row with fade/scale animation */}
-        <div className="flex flex-row gap-8 w-full justify-center">
+        <div className="flex flex-row gap-4 sm:gap-6 md:gap-8 w-full justify-center">
           <motion.div
             key={current}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="flex flex-row gap-8 w-full justify-center"
+            className="flex flex-row gap-4 sm:gap-6 md:gap-8 w-full justify-center"
           >
             {visible.map((item, idx: number) => (
               <motion.div
@@ -154,7 +159,7 @@ function Carousel({ items, renderItem, itemsPerView = 3, auto = true, interval =
         <button
           onClick={next}
           aria-label="Suivant"
-          className="hidden md:flex absolute -right-8 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-12 h-12 bg-white border-2 border-[#20b2aa] text-[#19786a] hover:bg-[#20b2aa] hover:text-white rounded-full shadow transition-colors"
+          className="hidden lg:flex absolute -right-8 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-12 h-12 bg-white border-2 border-[#20b2aa] text-[#19786a] hover:bg-[#20b2aa] hover:text-white rounded-full shadow transition-colors"
         >
           <FaChevronRight size={28} />
         </button>
@@ -355,15 +360,17 @@ function StatBlockPro({ label, value }: { label: string; value: number }) {
 // VideoCard component
 function VideoCard({ src, title, subtitle, poster }: { src: string; title: string; subtitle: string; poster: string }) {
   return (
-    <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-4 flex flex-col items-stretch">
+    <div className="bg-white rounded-2xl shadow-md border border-gray-200 flex flex-col items-stretch overflow-hidden">
       <video
         src={src}
         controls
-        className="rounded-xl w-full h-56 object-cover mb-4 bg-gray-100"
+        className="rounded-none w-full h-56 object-cover mb-0 bg-gray-100"
         poster={poster}
       />
-      <h3 className="text-lg font-bold text-gray-900 mb-1">{title}</h3>
-      <p className="text-gray-600 text-sm mb-2">{subtitle}</p>
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="text-lg font-bold text-gray-900 mb-1">{title}</h3>
+        <p className="text-gray-600 text-sm mb-2">{subtitle}</p>
+      </div>
     </div>
   );
 }
@@ -634,21 +641,31 @@ export default function Home() {
         </p>
         <Carousel
           items={annonces}
-          itemsPerView={3}
           renderItem={(annonce, i) => (
-            <div key={i} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 flex flex-col h-full min-h-[400px] max-h-[400px] w-[350px] max-w-[350px] mx-auto" style={{boxShadow:'0 8px 32px 0 rgba(44,62,80,0.10)'}}>
-              <div className="relative w-full h-40 rounded-xl overflow-hidden mb-3">
+            <div
+              key={i}
+              className="bg-white rounded-2xl shadow-xl border border-gray-100 flex flex-col h-full w-[320px] sm:w-[340px] md:w-[360px] lg:w-[380px] max-w-[380px] mx-auto overflow-hidden"
+            >
+              <div className="relative w-full h-40">
                 <Image src={annonce.image} alt="Annonce" fill className="object-cover" />
               </div>
-              <div className="flex items-center gap-2 text-[#20b2aa] font-semibold text-sm">
-                <FaCalendarAlt /> <span>{annonce.date}</span>
+              <div className="px-6 pt-4">
+                <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold rounded-full px-3 py-1 mb-2">{annonce.category}</span>
               </div>
-              <h3 className="text-lg font-bold text-gray-900">{annonce.title}</h3>
-              <p className="text-gray-600 text-sm flex-1">{annonce.desc}</p>
-              <a href="#" className="text-[#4169e1] font-semibold hover:underline mt-2">Voir plus</a>
+              <div className="p-6 flex flex-col flex-1 pt-0">
+                <div className="flex items-center gap-2 text-[#20b2aa] font-semibold text-sm">
+                  <FaCalendarAlt /> <span>{annonce.date}</span>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900">{annonce.title}</h3>
+                <p className="text-gray-600 text-sm">{annonce.desc}</p>
+                <a href="#" className="text-[#4169e1] font-semibold hover:underline mt-1">Voir plus</a>
+              </div>
             </div>
           )}
         />
+        <div className="flex justify-center mt-6">
+          <a href="#" className="px-6 py-2 rounded-full border border-blue-700 text-blue-700 font-medium bg-white hover:bg-blue-50 transition-colors shadow-none">Voir toutes les annonces</a>
+        </div>
       </motion.section>
       {/* --- Qui nous sommes Section --- */}
       <motion.section initial={{opacity:0, y:40}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.3}} transition={{duration:0.7, ease:'easeOut'}} className="max-w-7xl mx-auto px-4 py-32">
@@ -667,13 +684,18 @@ export default function Home() {
           Restez informé de nos dernières activités et actualités
         </p>
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="flex justify-center relative">
-            {/* Stacked images example, adjust src as needed */}
-            <div className="absolute left-0 top-8 z-0 hidden md:block">
+          <div className="flex justify-center relative min-h-[340px]">
+            {/* Blue circles background - match design */}
+            <div className="absolute -left-8 top-16 w-32 h-32 rounded-full z-0" style={{background: '#1f44ac'}} />
+            <div className="absolute left-40 bottom-4 w-16 h-16 rounded-full z-0" style={{background: '#1f44ac'}} />
+            {/* Stacked images with rotation */}
+            <div className="absolute left-0 top-8 z-10 hidden md:block">
               <img src="/images/exams.jpg" alt="INAU" className="w-56 h-72 object-cover rounded-2xl shadow-lg rotate-[-8deg]" />
             </div>
-            <div className="relative z-10">
-              <img src="/images/graduation.jpg" alt="Directeur" className="w-64 h-80 object-cover rounded-2xl shadow-2xl" />
+            {/* New circle on front layer, centered above front image */}
+            <div className="absolute left-1/2 -translate-x-1/2 -top-4 w-10 h-10 rounded-full z-20" style={{background: '#1f44ac'}} />
+            <div className="relative z-20">
+              <img src="/images/graduation.jpg" alt="Directeur" className="w-64 h-80 object-cover rounded-2xl shadow-2xl rotate-[8deg] drop-shadow-lg" />
             </div>
           </div>
           <div>
@@ -704,18 +726,28 @@ export default function Home() {
         </p>
         <Carousel
           items={formations}
-          itemsPerView={3}
           renderItem={(formation, i) => (
-            <div key={i} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 flex flex-col h-full min-h-[400px] max-h-[400px] w-[350px] max-w-[350px] mx-auto" style={{boxShadow:'0 8px 32px 0 rgba(44,62,80,0.10)'}}>
-              <div className="relative w-full h-40 rounded-xl overflow-hidden mb-3">
+            <div
+              key={i}
+              className="bg-white rounded-2xl shadow-xl border border-gray-100 flex flex-col h-full w-[320px] sm:w-[340px] md:w-[360px] lg:w-[380px] max-w-[380px] mx-auto overflow-hidden"
+            >
+              <div className="relative w-full h-40">
                 <Image src={formation.image} alt={formation.title} fill className="object-cover bg-gray-100" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900">{formation.title}</h3>
-              <p className="text-gray-600 text-sm flex-1">{formation.desc}</p>
-              <a href="#" className="text-[#4169e1] font-semibold hover:underline mt-2">Voir la formation</a>
+              <div className="px-6 pt-4">
+                <span className="inline-block bg-green-100 text-green-800 text-xs font-semibold rounded-full px-3 py-1 mb-2">{formation.category}</span>
+              </div>
+              <div className="p-6 flex flex-col flex-1 pt-0">
+                <h3 className="text-lg font-bold text-gray-900">{formation.title}</h3>
+                <p className="text-gray-600 text-sm">{formation.desc}</p>
+                <a href="#" className="text-[#4169e1] font-semibold hover:underline mt-1">Voir la formation</a>
+              </div>
             </div>
           )}
         />
+        <div className="flex justify-center mt-6">
+          <a href="#" className="px-6 py-2 rounded-full border border-green-700 text-green-700 font-medium bg-white hover:bg-green-50 transition-colors shadow-none">Voir toutes les formations</a>
+        </div>
       </motion.section>
       {/* --- Explorer la bibliothèque Section --- */}
       <motion.section
@@ -749,7 +781,9 @@ export default function Home() {
             </p>
             <div className="flex gap-4 mt-4 justify-center md:justify-start">
               <a
-                href="#"
+                href="https://inau.ac.ma/binau/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3 rounded-lg font-bold bg-gradient-to-r from-blue-900 to-blue-400 text-white shadow hover:from-blue-800 hover:to-blue-500 transition text-lg"
               >
                 Visit
@@ -766,7 +800,7 @@ export default function Home() {
             <img
               src="/images/presentation.jpg"
               alt="INAU Bibliothèque"
-              className="rounded-2xl shadow-lg w-full max-w-md object-cover"
+              className="rounded-2xl shadow-lg w-full max-w-xl object-cover"
             />
           </div>
         </div>

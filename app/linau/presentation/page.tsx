@@ -1,35 +1,9 @@
-<<<<<<< HEAD
-export const metadata = { title: 'Présentation' };
-
-import ClientPresentationPage from './ClientPresentationPage';
-
-export default function PresentationPage() {
-  return <ClientPresentationPage />;
-} 
-=======
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
-
-const StatCard = ({ number, text }: { number: number, text: string }) => {
-    const { ref, inView } = useInView({
-        triggerOnce: true,
-        threshold: 0.5,
-    });
-
-    return (
-        <div ref={ref} className="text-center">
-            <div className="text-5xl font-bold text-teal-600">
-                {inView ? <CountUp end={number} duration={2.5} /> : '0'}
-            </div>
-            <p className="mt-2 text-gray-600">{text}</p>
-        </div>
-    );
-};
+import StatCard from './StatCard';
 
 const PresentationPage = () => {
     return (
@@ -102,5 +76,8 @@ const PresentationPage = () => {
     );
 };
 
-export default PresentationPage; 
->>>>>>> 82e94024455ece946db7e44dba3bd0f74ee6b49c
+export default PresentationPage;
+
+export const metadata = {
+  title: "Présentation",
+};
