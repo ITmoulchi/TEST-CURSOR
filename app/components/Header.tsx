@@ -70,8 +70,7 @@ const menu = [
       {
         label: "CEDoc",
         children: [
-          { label: "Doctorats (UGUT, GRDT, DTPGU)", href: "/recherche/cedoc/doctorats" },
-          { label: "Thèses soutenues", href: "/recherche/cedoc/theses" },
+          { label: "Doctorats (UGUT, GRDT, DTPGU)", href: "/recherche/cedoc/doctorats" }
         ],
       },
     ],

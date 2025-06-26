@@ -501,7 +501,7 @@ function AnimatedStat({ label, value }: { label: string; value: number }) {
   }, [inView, value]);
   return (
     <div ref={ref} className="flex flex-col items-center w-full">
-      <span className="text-4xl sm:text-5xl font-normal text-blue-800 mb-1">{count}</span>
+      <span className="text-4xl sm:text-4xl font-bold text-blue-800 mb-1">{count}</span>
       <span className="text-xs sm:text-sm text-gray-500 font-medium text-center">{label}</span>
     </div>
   );
@@ -622,7 +622,7 @@ export default function Home() {
           <div className="flex-1 h-0.5 bg-green-800 relative">
             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-800"></span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-green-800 mx-2 sm:mx-4 text-center break-words">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-800 mx-2 sm:mx-4 text-center break-words">
             Annonces
           </h2>
           <div className="flex-1 h-0.5 bg-green-800 relative">
@@ -656,7 +656,7 @@ export default function Home() {
           <div className="flex-1 h-0.5 bg-green-800 relative">
             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-800"></span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-green-800 mx-2 sm:mx-4 text-center break-words">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-800 mx-2 sm:mx-4 text-center break-words">
             Qui nous sommes
           </h2>
           <div className="flex-1 h-0.5 bg-green-800 relative">
@@ -692,7 +692,7 @@ export default function Home() {
           <div className="flex-1 h-0.5 bg-green-800 relative">
             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-800"></span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-green-800 mx-2 sm:mx-4 text-center break-words">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-800 mx-2 sm:mx-4 text-center break-words">
             Explorer nos formations
           </h2>
           <div className="flex-1 h-0.5 bg-green-800 relative">
@@ -729,7 +729,7 @@ export default function Home() {
           <div className="flex-1 h-0.5 bg-green-800 relative">
             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-800"></span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-green-800 mx-2 sm:mx-4 text-center break-words">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-800 mx-2 sm:mx-4 text-center break-words">
             Explorer la bibliothèque
           </h2>
           <div className="flex-1 h-0.5 bg-green-800 relative">
@@ -777,7 +777,7 @@ export default function Home() {
           <div className="flex-1 h-0.5 bg-green-800 relative">
             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-800"></span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-green-800 mx-2 sm:mx-4 text-center break-words">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-800 mx-2 sm:mx-4 text-center break-words">
             Moyens humains et matériels
           </h2>
           <div className="flex-1 h-0.5 bg-green-800 relative">
@@ -825,7 +825,7 @@ export default function Home() {
           <div className="flex-1 h-0.5 bg-green-800 relative">
             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-800"></span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-green-800 mx-2 sm:mx-4 text-center break-words">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-800 mx-2 sm:mx-4 text-center break-words">
             INAU dans la presse
           </h2>
           <div className="flex-1 h-0.5 bg-green-800 relative">
@@ -862,7 +862,7 @@ export default function Home() {
           <div className="flex-1 h-0.5 bg-green-800 relative">
             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-800"></span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-green-800 mx-2 sm:mx-4 text-center break-words">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-800 mx-2 sm:mx-4 text-center break-words">
             Galerie de photos
           </h2>
           <div className="flex-1 h-0.5 bg-green-800 relative">
