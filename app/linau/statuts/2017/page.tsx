@@ -7,20 +7,26 @@ export const metadata = {
 
 const Decret2017Page = () => {
     return (
-        <div className="bg-white">
-            {/* Hero Section */}
-            <div className="relative h-64 md:h-80">
+        <div className="pb-16">
+            {/* Header MOULCHI */}
+            <div className="relative w-full h-48 md:h-56 flex items-center justify-center">
                 <Image
-                    src="/images/graduation.jpg" // Image d'exemple
-                    alt="Bâtiment de l'INAU"
+                    src="/images/graduation.jpg"
+                    alt="Statuts 2017 Header"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center brightness-75"
+                    priority
                 />
-                <div className="absolute inset-0 bg-green-800/70" />
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center text-white">
-                    <h1 className="text-4xl md:text-5xl font-bold">Statuts de l'INAU (Mise à jour)</h1>
-                    <p className="mt-4 text-xl md:text-2xl">Décret n° 2-17-123 du 15 Chaabane 1438 (12 Mai 2017)</p>
+                <div className="relative z-10 text-center">
+                    <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-2">Statuts de l'INAU (Mise à jour)</h1>
+                    {/* Breadcrumb */}
+                    <div className="text-sm text-white/90 flex items-center justify-center gap-2">
+                        <span>Home</span>
+                        <span className="mx-1">&gt;</span>
+                        <span className="font-semibold">Statuts 2017</span>
+                    </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-[#20b2aa]/80 to-[#19786a]/80" />
             </div>
 
             {/* Main Content Section */}

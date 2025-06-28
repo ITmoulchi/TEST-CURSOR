@@ -7,25 +7,27 @@ import StatCard from './StatCard';
 
 const PresentationPage = () => {
     return (
-        <div className="bg-white">
-            {/* Hero Header with Image */}
-            <header className="relative h-64 md:h-80">
+        <div className="pb-16">
+            {/* Header with background image and title */}
+            <div className="relative w-full h-48 md:h-56 flex items-center justify-center">
                 <Image
-                    src="/images/presentation.jpg" // Remplacez par une image pertinente
-                    alt="Campus de l'INAU"
+                    src="/images/graduation.jpg"
+                    alt="Présentation INAU Header"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center brightness-75"
+                    priority
                 />
-                <div className="absolute inset-0 bg-green-800/70" />
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center text-white">
-                    <h1 className="text-4xl md:text-5xl font-bold">Présentation De L'INAU</h1>
-                    <nav className="text-sm mt-4">
-                        <Link href="/" className="text-white/80 hover:text-white">Home</Link>
-                        <span className="mx-2 text-white/50">&gt;</span>
-                        <span className="font-semibold text-white">Présentation De L'INAU</span>
-                    </nav>
+                <div className="relative z-10 text-center">
+                    <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-2">Présentation De L'INAU</h1>
+                    {/* Breadcrumb */}
+                    <div className="text-sm text-white/90 flex items-center justify-center gap-2">
+                        <Link href="/" className="hover:text-white">Home</Link>
+                        <span className="mx-1">&gt;</span>
+                        <span className="font-semibold">Présentation De L'INAU</span>
+                    </div>
                 </div>
-            </header>
+                <div className="absolute inset-0 bg-gradient-to-b from-[#20b2aa]/80 to-[#19786a]/80" />
+            </div>
 
             {/* Main Content */}
             <main className="max-w-4xl mx-auto py-12 px-4 space-y-10">
