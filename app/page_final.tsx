@@ -8,7 +8,6 @@ import React from "react";
 import { useInView } from 'framer-motion';
 import Link from 'next/link';
 import { annonces as allAnnonces } from './data/annonces';
-import { formations as allFormations } from './data/formations';
 
 const slides = [
   {
@@ -49,8 +48,13 @@ const slides = [
 // Use the 5 latest annonces for the home page
 const annonces = allAnnonces.slice(-5).reverse();
 
-// Use the 5 latest formations for the home page
-const formations = allFormations.slice(-5).reverse();
+const formations = [
+  { image: "/images/Group 418.png", title: "Formation 1", desc: "Courte description de la formation proposée par l'INAU pour les étudiants et professionnels.", category: "Urbanisme" },
+  { image: "/images/Group 418.png", title: "Formation 2", desc: "Une autre formation de qualité à l'INAU.", category: "Architecture" },
+  { image: "/images/Group 418.png", title: "Formation 3", desc: "Formation axée sur l'innovation et la pratique.", category: "Innovation" },
+  { image: "/images/Group 418.png", title: "Formation 4", desc: "Formation complémentaire pour les professionnels.", category: "Professionnel" },
+  { image: "/images/Group 418.png", title: "Formation 5", desc: "Formation avancée pour les étudiants.", category: "Avancé" },
+];
 
 // Add explicit types for Carousel props and parameters
 interface CarouselProps {
@@ -735,7 +739,7 @@ export default function Home() {
               <div className="p-6 flex flex-col flex-1 pt-0">
                 <h3 className="text-lg font-bold text-gray-900">{formation.title}</h3>
                 <p className="text-gray-600 text-sm">{formation.desc}</p>
-                <Link href={`/formations/${formation.slug}`} className="text-[#4169e1] font-semibold hover:underline mt-1">Voir la formation</Link>
+                <a href="#" className="text-[#4169e1] font-semibold hover:underline mt-1">Voir la formation</a>
               </div>
             </div>
           )}

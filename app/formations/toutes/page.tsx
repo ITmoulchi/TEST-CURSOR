@@ -59,7 +59,7 @@ export default function ToutesFormationsPage() {
               <div className="p-6 flex flex-col flex-1 pt-0">
                 <h3 className="text-lg font-bold text-gray-900">{formation.title}</h3>
                 <p className="text-gray-600 text-sm">{formation.desc}</p>
-                <a href="#" className="text-[#4169e1] font-semibold hover:underline mt-1">Voir la formation</a>
+                <a href={`/formations/${formation.slug}`} className="text-[#4169e1] font-semibold hover:underline mt-1">Voir la formation</a>
               </div>
             </motion.div>
           ))}
