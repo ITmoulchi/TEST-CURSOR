@@ -79,7 +79,7 @@ const menu = [
     href: "/actualites",
     children: [
       { label: "Concours", href: "/actualites/concours" },
-      { label: "Publications de l'INAU", href: "/actualites/publications" },
+      { label: "Publications de l'INAU", href: "/annonces" },
     ],
   },
   { label: "Bibliothèque", href: "/bibliotheque" },

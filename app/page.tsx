@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import type { JSX } from "react";
 import React from "react";
 import { useInView } from 'framer-motion';
+import Link from 'next/link';
 
 const slides = [
   {
@@ -68,6 +69,7 @@ interface CarouselProps {
 }
 
 function useItemsPerView() {
+  // SSR-safe initial value
   const [itemsPerView, setItemsPerView] = useState(3);
   useEffect(() => {
     function handleResize() {
@@ -385,6 +387,7 @@ function PhotoGalleryCarousel() {
   ];
   const [current, setCurrent] = React.useState(0);
   const total = images.length;
+  // SSR-safe initial value
   const [isMobile, setIsMobile] = React.useState(false);
   React.useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -658,13 +661,13 @@ export default function Home() {
                 </div>
                 <h3 className="text-lg font-bold text-gray-900">{annonce.title}</h3>
                 <p className="text-gray-600 text-sm">{annonce.desc}</p>
-                <a href="#" className="text-[#4169e1] font-semibold hover:underline mt-1">Voir plus</a>
+                <Link href={`/annonces/${annonce.slug}`} className="text-[#4169e1] font-semibold hover:underline mt-1">Voir plus</Link>
               </div>
             </div>
           )}
         />
         <div className="flex justify-center mt-6">
-          <a href="#" className="px-6 py-2 rounded-full border border-blue-700 text-blue-700 font-medium bg-white hover:bg-blue-50 transition-colors shadow-none">Voir toutes les annonces</a>
+          <a href="/annonces" className="px-6 py-2 rounded-full border border-blue-700 text-blue-700 font-medium bg-white hover:bg-blue-50 transition-colors shadow-none">Voir toutes les annonces</a>
         </div>
       </motion.section>
       {/* --- Qui nous sommes Section --- */}
@@ -746,7 +749,7 @@ export default function Home() {
           )}
         />
         <div className="flex justify-center mt-6">
-          <a href="#" className="px-6 py-2 rounded-full border border-green-700 text-green-700 font-medium bg-white hover:bg-green-50 transition-colors shadow-none">Voir toutes les formations</a>
+          <a href="/formations/toutes" className="px-6 py-2 rounded-full border border-green-700 text-green-700 font-medium bg-white hover:bg-green-50 transition-colors shadow-none">Voir toutes les formations</a>
         </div>
       </motion.section>
       {/* --- Explorer la bibliothèque Section --- */}

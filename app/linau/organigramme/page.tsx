@@ -1,4 +1,5 @@
 import React from 'react';
+import BannerWithBreadcrumb from '../../components/BannerWithBreadcrumb';
 
 const organigrammeData = {
     directeur: {
@@ -41,10 +42,10 @@ const Card = ({ titre, description, nom }: { titre: string, description: string,
 
 const OrganigrammePage = () => {
     return (
-        <div className="bg-gray-50 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto text-center mb-16">
-                <h1 className="text-4xl font-bold text-gray-900">Organigramme</h1>
-                <p className="mt-2 text-lg text-gray-600">Institut National d'Aménagement et d'Urbanisme</p>
+        <div className="bg-gray-50 min-h-screen pb-16">
+            <BannerWithBreadcrumb image="/images/graduation.jpg" />
+            <div className="max-w-5xl mx-auto text-center mb-16 mt-12">
+                {/* Removed h1 and subtitle, handled by banner */}
             </div>
 
             <div className="flex flex-col items-center">

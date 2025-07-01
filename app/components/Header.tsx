@@ -87,7 +87,7 @@ const menu = [
     label: "Actualités",
     children: [
       { label: "Concours", href: "/actualites/concours" },
-      { label: "Publications de l'INAU", href: "/actualites/publications" },
+      { label: "Publications de l'INAU", href: "/annonces" },
     ],
   },
   { label: "Bibliothèque", href: "https://inau.ac.ma/binau/", external: true },

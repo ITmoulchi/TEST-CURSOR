@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import BannerWithBreadcrumb from '../../../components/BannerWithBreadcrumb';
 
 export const metadata = {
   title: "Statuts 2013",
@@ -8,27 +9,7 @@ export const metadata = {
 const DecretPage = () => {
     return (
         <div className="pb-16">
-            {/* Header MOULCHI */}
-            <div className="relative w-full h-48 md:h-56 flex items-center justify-center">
-                <Image
-                    src="/images/graduation.jpg"
-                    alt="Statuts 2013 Header"
-                    fill
-                    className="object-cover object-center brightness-75"
-                    priority
-                />
-                <div className="relative z-10 text-center">
-                    <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-2">Statuts de l'INAU</h1>
-                    {/* Breadcrumb */}
-                    <div className="text-sm text-white/90 flex items-center justify-center gap-2">
-                        <span>Home</span>
-                        <span className="mx-1">&gt;</span>
-                        <span className="font-semibold">Statuts 2013</span>
-                    </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-[#20b2aa]/80 to-[#19786a]/80" />
-            </div>
-
+            <BannerWithBreadcrumb image="/images/graduation.jpg" />
             {/* Main Content Section */}
             <main className="max-w-4xl mx-auto py-12 md:py-16 px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">

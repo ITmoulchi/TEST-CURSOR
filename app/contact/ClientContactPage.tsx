@@ -1,5 +1,5 @@
 "use client";
-import Image from 'next/image';
+import BannerWithBreadcrumb from '../components/BannerWithBreadcrumb';
 import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
 const ClientMap = dynamic(() => import('../components/ClientMap'), { ssr: false });
@@ -7,19 +7,7 @@ const ClientMap = dynamic(() => import('../components/ClientMap'), { ssr: false 
 export default function ClientContactPage() {
   return (
     <div className="pb-16">
-      {/* Header with background image and title */}
-      <div className="relative w-full h-48 md:h-56 flex items-center justify-center">
-        <Image
-          src="/images/graduation.jpg"
-          alt="Contact Header"
-          fill
-          className="object-cover object-center brightness-75"
-          priority
-        />
-        <h1 className="relative z-10 text-3xl md:text-5xl font-bold text-white drop-shadow-lg">Contact</h1>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#20b2aa]/80 to-[#19786a]/80" />
-      </div>
-
+      <BannerWithBreadcrumb image="/images/graduation.jpg" />
       {/* Map section */}
       <div className="flex justify-center mt-8">
         <div className="w-full max-w-3xl rounded-2xl overflow-hidden shadow-lg border border-gray-200">

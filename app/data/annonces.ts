@@ -1,0 +1,16 @@
+export const annonces = [
+  { image: "/images/graduation.jpg", date: "08 Juin 2024", title: "Titre de l'annonce 1", slug: "annonce-1", desc: "Description courte de l'annonce pour donner un aperçu rapide à l'utilisateur.", category: "Conférence" },
+  { image: "/images/exams.jpg", date: "12 Juin 2024", title: "Titre de l'annonce 2", slug: "annonce-2", desc: "Une autre annonce importante pour les étudiants et le staff.", category: "Urbanisme" },
+  { image: "/images/school.jpg", date: "15 Juin 2024", title: "Titre de l'annonce 3", slug: "annonce-3", desc: "Annonce sur un événement à venir à l'INAU.", category: "Événement" },
+  { image: "/images/sports.jpg", date: "20 Juin 2024", title: "Titre de l'annonce 4", slug: "annonce-4", desc: "Annonce sur les activités sportives de l'INAU.", category: "Sport" },
+  { image: "/images/graduation.jpg", date: "25 Juin 2024", title: "Titre de l'annonce 5", slug: "annonce-5", desc: "Annonce supplémentaire pour tester le diaporama.", category: "Atelier" },
+  { image: "/images/exams.jpg", date: "28 Juin 2024", title: "Titre de l'annonce 6", slug: "annonce-6", desc: "Nouvelle annonce pour les examens de fin d'année.", category: "Examen" },
+  { image: "/images/school.jpg", date: "02 Juil 2024", title: "Titre de l'annonce 7", slug: "annonce-7", desc: "Annonce sur la rentrée scolaire prochaine.", category: "Rentrée" },
+  { image: "/images/sports.jpg", date: "05 Juil 2024", title: "Titre de l'annonce 8", slug: "annonce-8", desc: "Annonce sur un tournoi sportif organisé par l'INAU.", category: "Tournoi" },
+  { image: "/images/graduation.jpg", date: "10 Juil 2024", title: "Titre de l'annonce 9", slug: "annonce-9", desc: "Annonce sur la cérémonie de remise des diplômes.", category: "Cérémonie" },
+  { image: "/images/exams.jpg", date: "15 Juil 2024", title: "Titre de l'annonce 10", slug: "annonce-10", desc: "Annonce sur les résultats des examens.", category: "Résultats" },
+  { image: "/images/school.jpg", date: "18 Juil 2024", title: "Titre de l'annonce 11", slug: "annonce-11", desc: "Annonce sur une conférence à venir.", category: "Conférence" },
+  { image: "/images/sports.jpg", date: "22 Juil 2024", title: "Titre de l'annonce 12", slug: "annonce-12", desc: "Annonce sur une nouvelle activité sportive.", category: "Sport" },
+  { image: "/images/graduation.jpg", date: "25 Juil 2024", title: "Titre de l'annonce 13", slug: "annonce-13", desc: "Annonce sur un atelier de formation.", category: "Atelier" },
+  { image: "/images/exams.jpg", date: "28 Juil 2024", title: "Titre de l'annonce 14", slug: "annonce-14", desc: "Annonce sur la clôture de l'année universitaire.", category: "Clôture" },
+]; 
