@@ -4,21 +4,7 @@ import Image from 'next/image';
 import BannerWithBreadcrumb from '../../components/BannerWithBreadcrumb';
 import ScrollToTopButton from '../../components/ScrollToTopButton';
 import { motion } from 'framer-motion';
-
-const formations = [
-  { image: "/images/Group 418.png", title: "Formation 1", desc: "Courte description de la formation proposée par l'INAU pour les étudiants et professionnels.", category: "Urbanisme" },
-  { image: "/images/Group 418.png", title: "Formation 2", desc: "Une autre formation de qualité à l'INAU.", category: "Architecture" },
-  { image: "/images/Group 418.png", title: "Formation 3", desc: "Formation axée sur l'innovation et la pratique.", category: "Innovation" },
-  { image: "/images/Group 418.png", title: "Formation 4", desc: "Formation complémentaire pour les professionnels.", category: "Professionnel" },
-  { image: "/images/Group 418.png", title: "Formation 5", desc: "Formation avancée pour les étudiants.", category: "Avancé" },
-  { image: "/images/Group 418.png", title: "Formation 6", desc: "Formation sur la gestion de projet urbain.", category: "Gestion" },
-  { image: "/images/Group 418.png", title: "Formation 7", desc: "Formation sur l'environnement et le développement durable.", category: "Environnement" },
-  { image: "/images/Group 418.png", title: "Formation 8", desc: "Formation sur la planification urbaine avancée.", category: "Planification" },
-  { image: "/images/Group 418.png", title: "Formation 9", desc: "Formation sur la mobilité urbaine.", category: "Mobilité" },
-  { image: "/images/Group 418.png", title: "Formation 10", desc: "Formation sur l'économie urbaine.", category: "Économie" },
-  { image: "/images/Group 418.png", title: "Formation 11", desc: "Formation sur la participation citoyenne.", category: "Participation" },
-  { image: "/images/Group 418.png", title: "Formation 12", desc: "Formation sur l'urbanisme opérationnel.", category: "Opérationnel" },
-];
+import { formations } from '../../data/formations';
 
 const FORMATIONS_PER_PAGE = 6;
 
@@ -55,13 +41,12 @@ export default function ToutesFormationsPage() {
       <BannerWithBreadcrumb image="/images/Group 418.png" title="Toutes les formations" />
       <main ref={mainRef} className="max-w-7xl mx-auto px-4 py-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-green-800 mb-10 text-center">Toutes les formations</h2>
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}>
+        <div key={page} className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}>
           {formationsToShow.map((formation, i) => (
             <motion.div
-              key={startIdx + i}
+              key={`${page}-${startIdx + i}`}
               initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className="bg-white rounded-2xl shadow-xl border border-gray-100 flex flex-col h-full w-full max-w-[380px] mx-auto overflow-hidden"
             >

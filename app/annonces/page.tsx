@@ -43,7 +43,7 @@ export default function AnnoncesListPage() {
       <BannerWithBreadcrumb image="/images/graduation.jpg" title="Toutes les annonces" />
       <main ref={mainRef} className="max-w-7xl mx-auto px-4 py-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-green-800 mb-10 text-center">Toutes les annonces</h2>
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}>
+        <div key={page} className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}>
           {annoncesToShow.map((annonce, i) => (
             <motion.div
               key={annonce.slug}
