@@ -3,8 +3,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import BannerWithBreadcrumb from '../../components/BannerWithBreadcrumb';
 import ScrollToTopButton from '../../components/ScrollToTopButton';
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { formations } from '../../data/formations';
+
+const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
 const FORMATIONS_PER_PAGE = 6;
 
@@ -43,7 +45,7 @@ export default function ToutesFormationsClient() {
         <h2 className="text-3xl sm:text-4xl font-bold text-green-800 mb-10 text-center">Toutes les formations</h2>
         <div key={page} className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}>
           {formationsToShow.map((formation, i) => (
-            <motion.div
+            <MotionDiv
               key={`${page}-${startIdx + i}`}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -61,7 +63,7 @@ export default function ToutesFormationsClient() {
                 <p className="text-gray-600 text-sm">{formation.desc}</p>
                 <a href={`/formations/${formation.slug}`} className="text-[#4169e1] font-semibold hover:underline mt-1">Voir la formation</a>
               </div>
-            </motion.div>
+            </MotionDiv>
           ))}
         </div>
         {/* Pagination controls */}

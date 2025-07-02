@@ -6,7 +6,9 @@ import BannerWithBreadcrumb from '../components/BannerWithBreadcrumb';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import Link from 'next/link';
 import { annonces } from '../data/annonces';
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
 const ANNONCES_PER_PAGE = 6;
 
@@ -45,7 +47,7 @@ export default function AnnoncesListClient() {
         <h2 className="text-3xl sm:text-4xl font-bold text-green-800 mb-10 text-center">Toutes les annonces</h2>
         <div key={page} className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}>
           {annoncesToShow.map((annonce, i) => (
-            <motion.div
+            <MotionDiv
               key={annonce.slug}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +69,7 @@ export default function AnnoncesListClient() {
                 <p className="text-gray-600 text-sm">{annonce.desc}</p>
                 <Link href={`/annonces/${annonce.slug}`} className="text-[#4169e1] font-semibold hover:underline mt-1">Voir plus</Link>
               </div>
-            </motion.div>
+            </MotionDiv>
           ))}
         </div>
         {/* Pagination controls */}
