@@ -1,12 +1,10 @@
 import React from 'react';
-import Header from '../../../../components/Header';
 import BannerWithBreadcrumb from '../../../../components/BannerWithBreadcrumb';
 
 export default function EtudesCerauPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow pt-20">
+      <main className="flex-grow pt-0">
         <BannerWithBreadcrumb 
           title="Études du CERAU"
           image="/images/presentation.jpg"

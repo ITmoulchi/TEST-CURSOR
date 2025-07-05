@@ -77,7 +77,14 @@ const menu = [
       {
         label: "CEDoc",
         children: [
-          { label: "Doctorats (UGUT, GRDT, DTPGU)", href: "/recherche/cedoc/doctorats" }
+          {
+            label: "Doctorats",
+            children: [
+              { label: "Doctorat UGUT", href: "/recherche/cedoc/doctorats/ugut" },
+              { label: "Doctorat GRDT", href: "/recherche/cedoc/doctorats/grdt" },
+              { label: "Doctorat DTPGU", href: "/recherche/cedoc/doctorats/dtpgu" },
+            ]
+          }
         ],
       },
     ],
