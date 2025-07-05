@@ -63,7 +63,14 @@ const menu = [
         children: [
           { label: "Missions", href: "/recherche/cerau/missions" },
           { label: "Organisation", href: "/recherche/cerau/organisation" },
-          { label: "Études", href: "/recherche/cerau/etudes" },
+          {
+            label: "Études",
+            children: [
+              { label: "Études du CERAU", href: "/recherche/cerau/etudes/etudes-du-cerau" },
+              { label: "Mode de recherche", href: "/recherche/cerau/etudes/mode-de-recherche" },
+              { label: "Liste des recherches du CERAU", href: "/recherche/cerau/etudes/liste-des-recherches" },
+            ]
+          },
           { label: "Recherches", href: "/recherche/cerau/recherches" },
         ],
       },
